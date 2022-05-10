@@ -21,6 +21,18 @@ public class CategoryDto implements Serializable{
 	@NotEmpty
 	@Length(min = 3)
 	private String categoryName;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	
 
 }

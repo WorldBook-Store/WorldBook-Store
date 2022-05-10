@@ -26,10 +26,7 @@ import com.java.repository.BookRepository;
 import com.java.repository.SaveRepository;
 import com.java.service.ShoppingCartService;
 
-/**
- * @author TuNV15
- *
- */
+
 @Controller
 public class FavoriteController {
 

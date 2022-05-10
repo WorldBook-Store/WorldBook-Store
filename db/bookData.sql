@@ -1,15 +1,13 @@
-CREATE DATABASE  IF NOT EXISTS `book_store` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `book_store`;
--- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: book_store
 -- ------------------------------------------------------
--- Server version	8.0.16
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,14 +21,14 @@ USE `book_store`;
 
 DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `authors` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `author_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_info` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `author_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=536 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=537 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,34 +47,31 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `books` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `book_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `publish_date` date DEFAULT NULL,
-  `suggest` int(11) DEFAULT NULL,
-  `author_id` int(10) unsigned DEFAULT NULL,
-  `company_id` int(10) unsigned DEFAULT NULL,
-  `category_id` int(10) unsigned DEFAULT NULL,
+  `suggest` int DEFAULT NULL,
+  `author_id` int unsigned DEFAULT NULL,
+  `company_id` int unsigned DEFAULT NULL,
+  `category_id` int unsigned DEFAULT NULL,
   `publishing_house` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `translator` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `number_of_pages` int(11) DEFAULT NULL,
-  `quality` int(11) DEFAULT '0',
-  `price` bigint(20) DEFAULT NULL,
-  `cover_price` bigint(20) DEFAULT NULL,
+  `number_of_pages` int DEFAULT NULL,
+  `quality` int DEFAULT '0',
+  `price` bigint DEFAULT NULL,
+  `cover_price` bigint DEFAULT NULL,
   `book_image` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `favorite` tinyint(4) NOT NULL,
+  `favorite` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `books_author_id_foreign` (`author_id`),
   KEY `books_company_id_foreign` (`company_id`),
   KEY `books_category_id_foreign` (`category_id`),
-  CONSTRAINT `FKfjixh2vym2cvfj3ufxj91jem7` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
-  CONSTRAINT `FKleqa3hhc0uhfvurq6mil47xk0` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `FKmm6ik7jippnnqrn3k51kdngb2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
   CONSTRAINT `books_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
   CONSTRAINT `books_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   CONSTRAINT `books_company_id_foreign` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
@@ -101,15 +96,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `category_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent_id` tinyint(4) DEFAULT NULL,
-  `order` tinyint(4) DEFAULT NULL,
+  `parent_id` tinyint DEFAULT NULL,
+  `order` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categories_category_name_index` (`category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +113,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Sách Tiếng Việt 1',0,1),(2,' Sách Tiếng Anh',0,2),(3,' Sách Văn Học',1,1),(4,'Sách Thiếu Nhi ',1,2),(5,'Sách Kỹ Năng - Sống Đẹp',1,3),(6,'Sách Kinh Tế',1,4),(7,'Sách Nuôi Dạy Con',1,5),(8,'Sách Tham Khảo',1,6),(9,'Sách Giáo Khoa',1,7),(10,'Sách Học Ngoại Ngữ',1,8),(11,'Từ Điển',1,9),(12,'Truyện Tranh, Manga, Comic',1,10),(13,'Giáo Trình Đại Học - Cao Đẳng',1,11),(14,'Sách Kiến Thức Tổng Hợp',1,12),(15,'Sách Khoa Học - Kỹ Thuật',1,13),(16,'Sách Văn Hoá - Địa Lý - Du Lịch',1,14),(17,'Sách Tôn Giáo - Tâm Linh',1,15),(18,'Sách Chính Trị - Pháp Lý',1,16),(19,'Sách Nông - Lâm - Ngư Nghiệp',1,17),(20,'Sách Công Nghệ Thông Tin',1,18),(21,'Sách Y Học',1,19),(22,'Tạp Chí - Catalogue',1,20),(23,'Sách Thường Thức - Đời Sống',1,21),(24,'Sách Tâm lý - Giới tính',1,22),(25,'Foreign Language Learning',2,1),(26,'Fiction - Literature',2,2),(27,'Children\'s books',2,3),(28,'Teens',2,4),(29,'Memoirs - Biographies',2,5),(30,'How-to - Self help',2,6),(31,'Economics',2,7),(32,'Awarded books',2,8),(33,'Nature - Humanities',2,9),(34,'Education - Teaching',2,10),(35,'Non-fiction - Social sciences',2,11),(36,'Reference',2,12),(37,'Magazines',2,13),(39,'test thể loại',2,13),(45,'sách kiếm hiệp 123',NULL,NULL);
+INSERT INTO `categories` VALUES (1,'Sách Tiếng Việt 1',0,1),(2,' Sách Tiếng Anh',0,2),(3,' Sách Văn Học',1,1),(4,'Sách Thiếu Nhi ',1,2),(5,'Sách Kỹ Năng - Sống Đẹp',1,3),(6,'Sách Kinh Tế',1,4),(7,'Sách Nuôi Dạy Con',1,5),(8,'Sách Tham Khảo',1,6),(9,'Sách Giáo Khoa',1,7),(10,'Sách Học Ngoại Ngữ',1,8),(11,'Từ Điển',1,9),(12,'Truyện Tranh, Manga, Comic',1,10),(13,'Giáo Trình Đại Học - Cao Đẳng',1,11),(14,'Sách Kiến Thức Tổng Hợp',1,12),(15,'Sách Khoa Học - Kỹ Thuật',1,13),(16,'Sách Văn Hoá - Địa Lý - Du Lịch',1,14),(17,'Sách Tôn Giáo - Tâm Linh',1,15),(18,'Sách Chính Trị - Pháp Lý',1,16),(19,'Sách Nông - Lâm - Ngư Nghiệp',1,17),(20,'Sách Công Nghệ Thông Tin',1,18),(21,'Sách Y Học',1,19),(22,'Tạp Chí - Catalogue',1,20),(23,'Sách Thường Thức - Đời Sống',1,21),(24,'Sách Tâm lý - Giới tính',1,22),(25,'Foreign Language Learning',2,1),(26,'Fiction - Literature',2,2),(27,'Children\'s books',2,3),(28,'Teens',2,4),(29,'Memoirs - Biographies',2,5),(30,'How-to - Self help',2,6),(31,'Economics',2,7),(32,'Awarded books',2,8),(33,'Nature - Humanities',2,9),(34,'Education - Teaching',2,10),(35,'Non-fiction - Social sciences',2,11),(36,'Reference',2,12),(37,'Magazines',2,13),(39,'test thể loại',2,13),(45,'sách kiếm hiệp 123',NULL,NULL),(46,'Đam Mỹ',NULL,NULL),(47,'AAAA',NULL,NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,9 +123,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `companies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `companies` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `company_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `company_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `company_image` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -157,7 +152,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customers` (
   `customerId` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -167,7 +162,7 @@ CREATE TABLE `customers` (
   `photo` varchar(255) DEFAULT NULL,
   `roleId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`customerId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,17 +181,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `order_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `price` double DEFAULT NULL,
-  `quality` int(11) DEFAULT NULL,
-  `book_id` int(11) DEFAULT NULL,
-  `order_id` int(11) DEFAULT NULL,
+  `quality` int DEFAULT NULL,
+  `book_id` int DEFAULT NULL,
+  `order_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKjyu2qbqt8gnvno9oe9j2s2ldk` (`order_id`),
   CONSTRAINT `FKjyu2qbqt8gnvno9oe9j2s2ldk` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,18 +210,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `created_at` datetime(6) DEFAULT NULL,
   `nameReceiver` varchar(255) DEFAULT NULL,
   `order_status` varchar(255) DEFAULT NULL,
   `phoneReceiver` varchar(255) DEFAULT NULL,
   `shipping_address` varchar(255) DEFAULT NULL,
-  `shipping_fee` int(11) DEFAULT NULL,
+  `shipping_fee` int DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   `customerId` varchar(255) DEFAULT NULL,
-  `payment_id` int(11) DEFAULT NULL,
+  `payment_id` int DEFAULT NULL,
   `name_receiver` varchar(255) DEFAULT NULL,
   `phone_receiver` varchar(255) DEFAULT NULL,
   `customer_id` varchar(255) DEFAULT NULL,
@@ -235,7 +230,7 @@ CREATE TABLE `orders` (
   KEY `FK8aol9f99s97mtyhij0tvfj41f` (`payment_id`),
   CONSTRAINT `FK1bpj2iini89gbon333nm7tvht` FOREIGN KEY (`customerId`) REFERENCES `customers` (`customerId`),
   CONSTRAINT `FK8aol9f99s97mtyhij0tvfj41f` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,40 +244,15 @@ INSERT INTO `orders` VALUES (1,'2021-10-16 14:42:31.268000',NULL,'Đang xử lý
 UNLOCK TABLES;
 
 --
--- Table structure for table `password_resets`
---
-
-DROP TABLE IF EXISTS `password_resets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `password_resets` (
-  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`),
-  KEY `password_resets_token_index` (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `password_resets`
---
-
-LOCK TABLES `password_resets` WRITE;
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `payments`
 --
 
 DROP TABLE IF EXISTS `payments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `amount` int(11) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `amount` int DEFAULT NULL,
   `createdAT` datetime(6) DEFAULT NULL,
   `paymentStatus` varchar(255) DEFAULT NULL,
   `paymentType` varchar(255) DEFAULT NULL,
@@ -293,7 +263,7 @@ CREATE TABLE `payments` (
   `remember_token` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,18 +281,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `saves`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `saves` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `created_at` datetime(6) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `book_id` int(11) DEFAULT NULL,
+  `book_id` int DEFAULT NULL,
   `customerId` varchar(255) DEFAULT NULL,
   `customer_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKljl5fi81fce2vma624wnylid1` (`customerId`),
   CONSTRAINT `FKljl5fi81fce2vma624wnylid1` FOREIGN KEY (`customerId`) REFERENCES `customers` (`customerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -344,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-09  3:12:59
+-- Dump completed on 2022-05-11  2:22:08

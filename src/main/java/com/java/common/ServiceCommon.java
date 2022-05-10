@@ -70,7 +70,7 @@ public class ServiceCommon {
 		listAuthorByBookName(model);
 		listNXBByBookName(model);
 		Integer totalSave = 0;
-		// get count yêu thích
+		// get count yêu thích(wish list)
 		if (customer != null) {
 			totalSave = saveRepository.selectCountSave(customer.getCustomerId());
 		}

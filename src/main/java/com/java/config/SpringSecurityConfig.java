@@ -60,8 +60,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.rememberMe().rememberMeParameter("remember"); // [remember-me]
 
-		// oauth2- đăng nhập từ mxh
-		http.oauth2Login().loginPage("/login").defaultSuccessUrl("/", true).failureUrl("/login").authorizationEndpoint()
-				.baseUri("/oauth2/authorization");
 	}
 }

@@ -24,10 +24,6 @@ import com.java.dto.CategoryDto;
 import com.java.entity.Category;
 import com.java.repository.CategoryRepository;
 
-/**
- * @author TuNV15
- *
- */
 @Controller
 public class CategoryController {
 
@@ -51,9 +47,10 @@ public class CategoryController {
 			model.addAttribute("error", "Lỗi");
 			return "admin/categoryList";
 		} else {
-
+			
 			Category category = new Category();
 			BeanUtils.copyProperties(dto, category);
+			category.setCategoryName(dto.getCategoryName());
 			categoryRepository.save(category);
 			model.addAttribute("message", "Thêm mới thành công !");
 		}
