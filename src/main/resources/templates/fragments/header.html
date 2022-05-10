@@ -43,10 +43,6 @@
 								</a>
 								<ul class="dropdown-menu tg-themedropdownmenu"
 									aria-labelledby="tg-currenty">
-									<security:authorize access="hasRole('ROLE_ADMIN')">
-										<li><a th:href="@{/admin/home}"> <span>Trang quản lý</span>
-										</a></li>
-									</security:authorize>
 									<li><a th:href="@{/logout}"> <span>Logout</span>
 									</a></li>
 								</ul>
