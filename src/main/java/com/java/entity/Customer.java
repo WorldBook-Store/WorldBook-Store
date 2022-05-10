@@ -25,17 +25,19 @@ import lombok.Data;
 @Table(name = "customers")
 public class Customer implements UserDetails, CredentialsContainer {
 
+	
+
 	@Id
 	private String customerId;
 	private String password;
 	private String fullname;
 	private String email;
-	private String photo = "";
+	private String photo;
 	private Boolean enabled;
 	private String roleId;
 
 	public Customer() {
-		super();
+		super(); 	
 		this.enabled = false;
 	}
 
