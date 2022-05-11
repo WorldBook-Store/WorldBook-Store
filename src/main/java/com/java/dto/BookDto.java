@@ -31,7 +31,7 @@ public class BookDto {
 	private String publishingHouse;
 	private String translator;
 	@Column(name = "number_of_pages")
-	private Integer numberOfPages;
+	private Integer numberOfPages; 
 	@NotNull
 	@Min(value = 1)
 	private Integer quality;
