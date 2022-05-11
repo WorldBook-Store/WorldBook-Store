@@ -24,8 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.java.entity.Author;
 import com.java.entity.Customer;
+import com.java.entity.Save;
 import com.java.repository.AuthorRepositoy;
 import com.java.repository.CustomersRepository;
+import com.java.repository.SaveRepository;
 
 @Controller
 public class CustomerController {
@@ -80,6 +82,7 @@ public class CustomerController {
 	public String editCustomer(@PathVariable(name="customerId") String customerId, @ModelAttribute("customer") Customer customer, Model model) {
 
 		customer.setCustomerId(customerId);
+		customersRepository.save(customer);
 //		customersRepository.updateCustomer(customer.getEmail(), customer.getFullname(), customerId);
 		return "redirect:/admin/customerList";
 	}
@@ -112,10 +115,16 @@ public class CustomerController {
 //	}
 //
 	// delete customer
+	@Autowired SaveRepository saveRepository;
+	
 	@GetMapping("/deleteCustomer/{id}")
-	public String deleteAuthor(@PathVariable("customerId") String customerId, Model model) {
-
+	public String deleteAuthor(@PathVariable("id") String customerId, Model model) {
+		List<Save> listSave = saveRepository.selectAllSaves(customerId);
+		for (Save temp : listSave) {
+			saveRepository.deleteById(temp.getId());
+		}
+		
 		customersRepository.deleteById(customerId);
-		return "redirect:/admin/authorList";
+		return "redirect:/admin/customerList";
 	}
 }
