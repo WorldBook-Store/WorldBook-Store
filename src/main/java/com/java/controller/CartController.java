@@ -174,9 +174,16 @@ public class CartController {
 			throws MessagingException {
 
 		String checkOut = request.getParameter("checkOut");
-
+		
 		Collection<CartItem> cartItems = shoppingCartService.getCartItems();
-
+//		check so luong ton trong kho
+		for (CartItem cartItem : cartItems) {
+			int qty = bookRepository.getQuantityBook(cartItem.getBookId());
+			if(qty < cartItem.getQuantity())
+				return "site/fail";
+		}
+		
+		
 		double totalPrice = 0;
 		for (CartItem cartItem : cartItems) {
 			double price = cartItem.getQuantity() * cartItem.getBook().getPrice();
@@ -219,10 +226,19 @@ public class CartController {
 			orderDetail.setPrice(unitPrice);
 			orderDetailRepository.save(orderDetail);
 		}
+//			cap nhat so luong ton kho
+			for (CartItem cartItem : cartItems) {
+				int qty = bookRepository.getQuantityBook(cartItem.getBookId());
+				int x = qty - cartItem.getQuantity();
+				System.out.println(x);
+				bookRepository.updateQuantityBook(x, cartItem.getBookId());
+				     
+			}
+		
 
-		serviceCommon.sendSimpleEmail(customer.getEmail(), "Book Store Xác Nhận Đơn hàng", "aaaa", cartItems,
-				totalPrice, order);
-		shoppingCartService.clear();
+//		serviceCommon.sendSimpleEmail(customer.getEmail(), "Book Store Xác Nhận Đơn hàng", "aaaa", cartItems,
+//				totalPrice, order);
+//		shoppingCartService.clear();
 		session.removeAttribute("cartItems");
 		model.addAttribute("orderId", order.getId());
 
