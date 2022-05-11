@@ -65,7 +65,7 @@ public class CustomerController {
 //	@Autowired
 //	AuthorRepositoy authorRepositoy;
 
-	// Edit author			   editCustomer
+	// Edit Customer			   editCustomer
 	@GetMapping(value ="/admin/editCustomer")
 	public String editCustomer(@RequestParam(required=false,name="customerId") String customerId, Model model) {
 		
@@ -82,38 +82,11 @@ public class CustomerController {
 	public String editCustomer(@PathVariable(name="customerId") String customerId, @ModelAttribute("customer") Customer customer, Model model) {
 
 		customer.setCustomerId(customerId);
-		customersRepository.save(customer);
-//		customersRepository.updateCustomer(customer.getEmail(), customer.getFullname(), customerId);
+//		customersRepository.save(customer);
+		customersRepository.updateCustomer(customer.getEmail(), customer.getFullname(), customerId);
 		return "redirect:/admin/customerList";
 	}
 
-//	// add author
-//	@PostMapping(value = "/addAuthor")
-//	public String addAuthor(Model model, @Valid @ModelAttribute("author") Author author, BindingResult result,
-//			@RequestParam("file") MultipartFile file, HttpServletRequest httpServletRequest) {
-//		try {
-//			File convFile = new File(pathUploadImage + "/" + file.getOriginalFilename());
-//			FileOutputStream fos = new FileOutputStream(convFile);
-//			fos.write(file.getBytes());
-//			fos.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		author.setAuthorImage(file.getOriginalFilename());
-//		Author b = authorRepositoy.save(author);
-//		if (null != b) {
-//			model.addAttribute("message", "Thêm mới thành công!");
-//			model.addAttribute("book", author);
-//		} else {
-//			model.addAttribute("message", "Thêm mới thất bại!");
-//			model.addAttribute("book", author);
-//		}
-//		model.addAttribute("message", "Thêm mới thành công!");
-//
-//		return "redirect:/admin/authorList";
-//	}
-//
 	// delete customer
 	@Autowired SaveRepository saveRepository;
 	
