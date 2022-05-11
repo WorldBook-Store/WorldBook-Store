@@ -113,12 +113,14 @@ td , th {
 										</div>
 										<div class="form-group">
 											<input th:field="*{phoneReceiver}" type="text" class="form-control" placeholder="Số Điện Thoại*">
+											<span style="color: red">[[${errPhone}]]</span>
 										</div>
 										<div class="form-group">
 											<input type="email" name="email" class="form-control" placeholder="Họ Tên*" th:value="${customer.email}" disabled>
 										</div>
 										<div class="form-group">
 											<input th:field="*{shippingAddress}" type="text" class="form-control" placeholder="Địa Chỉ*">
+											<span style="color: red">[[${errAddress}]]</span>
 										</div>
 										<div class="form-group tg-hastextarea">
 											<textarea placeholder="Thông Tin Thêm"></textarea>

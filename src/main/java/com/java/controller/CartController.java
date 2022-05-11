@@ -172,6 +172,46 @@ public class CartController {
 	@Transactional
 	public String checkedOut(Model model, Order order, HttpServletRequest request, Customer customer)
 			throws MessagingException {
+		boolean checkAddress = order.getShippingAddress().equals("");
+		boolean checkPhone = !order.getPhoneReceiver().matches(
+				"^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$") ;
+	
+		if(checkPhone || checkAddress) {
+			Order _order = new Order();
+			
+			if(checkPhone) {
+				model.addAttribute("errPhone", "Số điện thoại không đúng");
+				_order.setShippingAddress(order.getShippingAddress());
+				
+			}
+			if(checkAddress) {
+				model.addAttribute("errAddress", "Địa chỉ không hợp lệ");
+				_order.setPhoneReceiver( order.getPhoneReceiver());
+			}
+			
+			Integer totalCartItems = shoppingCartService.getCount();
+			model.addAttribute("totalCartItems", totalCartItems);
+
+			
+			
+			
+			model.addAttribute("order", _order);
+
+			Collection<CartItem> cartItems = shoppingCartService.getCartItems();
+			model.addAttribute("cartItems", cartItems);
+			model.addAttribute("total", shoppingCartService.getAmount());
+
+			model.addAttribute("NoOfItems", shoppingCartService.getCount());
+			double totalPrice = 0;
+			for (CartItem cartItem : cartItems) {
+				double price = cartItem.getQuantity() * cartItem.getBook().getPrice();
+				totalPrice += price;
+			}
+
+			model.addAttribute("totalPrice", totalPrice);
+			return "site/checkOut";
+		}
+		
 
 		String checkOut = request.getParameter("checkOut");
 		
