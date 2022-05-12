@@ -64,10 +64,11 @@
 														<ul class="tg-delevrystock">
 															<li><i class="icon-rocket"></i><span>Miễn Phí Giao Hàng</span></li>
 															<li><i class="icon-checkmark-circle"></i><span>Giao Hàng Trong 3 Ngày </span></li>
-															<li><i class="icon-store"></i><span>Tình Trạng: <em>Còn Hàng</em></span></li>
+															<li><i class="icon-store"></i><span>Số lượng: <em>[[${book.quality}]]</em> sản phẩm có sẵn</span></li>
 														</ul>
-														<a class="tg-btn tg-active tg-btn-lg"
-															th:attr="onclick=|addCart('${book.id}')|">Thêm Giỏ Hàng</a>
+														<a class="tg-btn tg-active tg-btn-lg" th:attr="onclick=|addCart('${book.id}')|" style="cursor: pointer;">Thêm Giỏ Hàng</a>
+															
+														
 														
 													</div>
 												</div>
@@ -162,7 +163,7 @@
 															<div class="tg-description"
 																th:utext="${book.author?.authorInfo}">
 															</div>
-															<a class="tg-btn tg-active" href="javascript:void(0);">Xem tất cả sách</a>
+															<a class="tg-btn tg-active" th:href="@{/authorDetail(id=${book.author?.id})}">Xem tất cả sách</a>
 														</div>
 													</div>
 												</div>

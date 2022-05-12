@@ -118,7 +118,7 @@ textarea.form-control{
 .form-control:-moz-placeholder { color: #666; } /* Mozilla Firefox 4 to 18 */
 .form-control::-moz-placeholder { color: #666; } /* Mozilla Firefox 19+ */
 .form-control:-ms-input-placeholder { color: #666; } /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color:#66; } /* Microsoft Edge */
+.form-control::-ms-input-placeholder { color:#666; } /* Microsoft Edge */
 input:focus,
 .select select:focus,
 .form-control:focus {
@@ -633,6 +633,7 @@ li.tg-rss a { background:#ff6600; }
 }
 .tg-sectionhead .tg-btn,
 .tg-btnstyletwo {
+	cursor:pointer;
 	float: right;
 	padding: 0 25px;
 	margin: 6px 0 0;
@@ -1067,6 +1068,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	width: 100%;
 	float: left;
 	position: relative;
+	background-color: rgba(197, 18, 188, 0.9) !important;
 }
 .tg-navigationarea:before {
 	left: 0;
