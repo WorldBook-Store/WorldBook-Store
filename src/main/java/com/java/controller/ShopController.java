@@ -68,7 +68,7 @@ public class ShopController {
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(12);
 
-		Page<Book> bookPage = findPaginated(PageRequest.of(currentPage - 1, pageSize));
+		Page<Book> bookPage = findPaginated(PageRequest.of(currentPage-1, pageSize));
 
 		model.addAttribute("bookPage", bookPage);
 		int totalPages = bookPage.getTotalPages();
