@@ -24,8 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.java.entity.Author;
 import com.java.entity.Customer;
+import com.java.entity.Save;
 import com.java.repository.AuthorRepositoy;
 import com.java.repository.CustomersRepository;
+import com.java.repository.SaveRepository;
 
 @Controller
 public class CustomerController {
@@ -63,7 +65,7 @@ public class CustomerController {
 //	@Autowired
 //	AuthorRepositoy authorRepositoy;
 
-	// Edit author			   editCustomer
+	// Edit Customer			   editCustomer
 	@GetMapping(value ="/admin/editCustomer")
 	public String editCustomer(@RequestParam(required=false,name="customerId") String customerId, Model model) {
 		
@@ -80,42 +82,22 @@ public class CustomerController {
 	public String editCustomer(@PathVariable(name="customerId") String customerId, @ModelAttribute("customer") Customer customer, Model model) {
 
 		customer.setCustomerId(customerId);
-//		customersRepository.updateCustomer(customer.getEmail(), customer.getFullname(), customerId);
+//		customersRepository.save(customer);
+		customersRepository.updateCustomer(customer.getEmail(), customer.getFullname(), customerId);
 		return "redirect:/admin/customerList";
 	}
 
-//	// add author
-//	@PostMapping(value = "/addAuthor")
-//	public String addAuthor(Model model, @Valid @ModelAttribute("author") Author author, BindingResult result,
-//			@RequestParam("file") MultipartFile file, HttpServletRequest httpServletRequest) {
-//		try {
-//			File convFile = new File(pathUploadImage + "/" + file.getOriginalFilename());
-//			FileOutputStream fos = new FileOutputStream(convFile);
-//			fos.write(file.getBytes());
-//			fos.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		author.setAuthorImage(file.getOriginalFilename());
-//		Author b = authorRepositoy.save(author);
-//		if (null != b) {
-//			model.addAttribute("message", "Thêm mới thành công!");
-//			model.addAttribute("book", author);
-//		} else {
-//			model.addAttribute("message", "Thêm mới thất bại!");
-//			model.addAttribute("book", author);
-//		}
-//		model.addAttribute("message", "Thêm mới thành công!");
-//
-//		return "redirect:/admin/authorList";
-//	}
-//
 	// delete customer
+	@Autowired SaveRepository saveRepository;
+	
 	@GetMapping("/deleteCustomer/{id}")
-	public String deleteAuthor(@PathVariable("customerId") String customerId, Model model) {
-
+	public String deleteAuthor(@PathVariable("id") String customerId, Model model) {
+		List<Save> listSave = saveRepository.selectAllSaves(customerId);
+		for (Save temp : listSave) {
+			saveRepository.deleteById(temp.getId());
+		}
+		
 		customersRepository.deleteById(customerId);
-		return "redirect:/admin/authorList";
+		return "redirect:/admin/customerList";
 	}
 }

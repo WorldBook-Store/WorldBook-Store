@@ -84,9 +84,6 @@ public class Book implements Serializable {
 	@OneToMany(mappedBy = "book")
 	private List<OrderDetail> orderDetails;
 
-//	@OneToMany(mappedBy = "book")
-//	private List<Comment> comments;
-
 	@OneToMany(mappedBy = "book")
 	private List<Save> saves;
 
@@ -244,14 +241,6 @@ public class Book implements Serializable {
 		this.orderDetails = orderDetails;
 	}
 
-//	public List<Comment> getComments() {
-//		return comments;
-//	}
-//
-//	public void setComments(List<Comment> comments) {
-//		this.comments = comments;
-//	}
-
 	public List<Save> getSaves() {
 		return saves;
 	}
@@ -267,7 +256,6 @@ public class Book implements Serializable {
 	public void setFavorite(boolean favorite) {
 		this.favorite = favorite;
 	}
-	
 	
 
 }
