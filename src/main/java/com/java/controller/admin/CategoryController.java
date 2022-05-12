@@ -34,7 +34,7 @@ public class CategoryController {
 	@GetMapping(value = "/admin/categories")
 	public String categoryList(Model model) {
 
-		List<Category> listCategories = categoryRepository.findAll();
+		List<Category> listCategories = categoryRepository.findAll(); 
 		model.addAttribute("category", new Category());
 		model.addAttribute("listCategories", listCategories);
 		return "admin/categoryList";

@@ -27,6 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
+//	Định cấu hình bảo mật của các đường dẫn web trong ứng dụng, đăng nhập, đăng nhập, v.v.
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -37,6 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
+		// nếu chỉ có 1 role trong database thì sử dụng HASROLE  còn nếu có nhiều role thì sủ dụng HASANYROLE 
 		http.authorizeRequests().antMatchers("/checkout" ).access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
 		// Trang chỉ dành cho ADMIN
@@ -50,6 +52,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Cấu hình cho Login Form.
 		http.authorizeRequests().and().formLogin()//
 				// Submit URL của trang login
+//					Biểu mẫu đăng nhập sẽ truyền dữ liệu lên URL này để xử lý (user&password)
 				.loginProcessingUrl("/doLogin") // Submit URL
 				.loginPage("/login")//
 				.defaultSuccessUrl("/")//

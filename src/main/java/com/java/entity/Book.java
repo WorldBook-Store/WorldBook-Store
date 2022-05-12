@@ -256,6 +256,5 @@ public class Book implements Serializable {
 	public void setFavorite(boolean favorite) {
 		this.favorite = favorite;
 	}
-	
 
 }
