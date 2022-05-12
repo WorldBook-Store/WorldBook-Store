@@ -1068,7 +1068,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	width: 100%;
 	float: left;
 	position: relative;
-	background-color: rgba(197, 18, 188, 0.9) !important;
+	background-color: pink;
 }
 .tg-navigationarea:before {
 	left: 0;
@@ -1115,7 +1115,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	background: transparent;
 }
 .tg-navigation > ul > li > a {
-	color: #fff;
+	color: black;
 	padding: 0 25px;
 }
 .tg-navigation > ul > li > a > i {

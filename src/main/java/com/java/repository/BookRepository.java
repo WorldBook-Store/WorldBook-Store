@@ -2,6 +2,8 @@ package com.java.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.java.entity.Book;
 
 @Repository
+@Transactional
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	// Hiển thị Top 10 sách bán chạy nhất
@@ -67,4 +70,8 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 	@Modifying
 	@Query(value = "UPDATE books SET quality = ?1 where id = ?2", nativeQuery = true)
 	public void updateQuantityBook(Integer x, Integer id);
+	
+	@Modifying
+	@Query(value = "DELETE FROM books WHERE author_id = ?", nativeQuery = true)
+	public void deleteByAuthor(Integer id);
 }

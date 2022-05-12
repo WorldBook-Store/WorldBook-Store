@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.java.entity.Author;
 import com.java.repository.AuthorRepositoy;
+import com.java.repository.BookRepository;
 
 @Controller
 public class AuthorController {
@@ -42,7 +43,10 @@ public class AuthorController {
 
 	@Autowired
 	AuthorRepositoy authorRepositoy;
-
+	
+	@Autowired
+	BookRepository bookRepository;
+	
 	// Edit author
 	@GetMapping(value = "/admin/editAuthor")
 	public String editAuthor(@RequestParam("id") int id, Model model, @ModelAttribute("author") Author author) {
@@ -90,7 +94,7 @@ public class AuthorController {
 	// delete author
 	@GetMapping("/deleteAuthor/{id}")
 	public String deleteAuthor(@PathVariable("id") Integer id, Model model) {
-
+		bookRepository.deleteByAuthor(id);
 		authorRepositoy.deleteById(id);
 		return "redirect:/admin/authorList";
 	}

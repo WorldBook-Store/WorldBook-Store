@@ -78,7 +78,6 @@
 											<thead>
 												<tr>
 													<th>UserName</th>
-													<th>Image</th>
 													<th>Author Name</th>
 													<th>Email</th>
 													<th style="width: 10%">Action</th>
@@ -87,7 +86,6 @@
 											<tfoot>
 												<tr>
 													<th>UserName</th>
-													<th>Image</th>
 													<th>Author Name</th>
 													<th>Email</th>
 													<th>Action</th>
@@ -96,14 +94,6 @@
 											<tbody>
 												<tr th:each="item : ${listCustomer}">
 													<td>[[${item.customerId}]]</td>
-													<td><th:block th:if="${item.photo != null}">
-															<img th:src="@{'/loadImage?imageName='+${item.photo}}"
-																width="90px" alt="image description">
-														</th:block> 
-														<th:block th:if="${item.photo == null}">
-															<img src="../images/author/noAvaAuthor.jpg" width="90px"
-																alt="image description">
-														</th:block></td>
 													<td>[[${item.fullname}]]</td>
 													<td>[[${item.email}]]</td>
 													<td>
