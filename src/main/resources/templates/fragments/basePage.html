@@ -8,7 +8,7 @@
 	<th:block th:fragment= "basePage">
 	<div class="tg-widget tg-catagories">
 		<div class="tg-widgettitle">
-			<h3>Thể loại sách</h3>
+			<h3>Category</h3>
 		</div>
 		<div class="tg-widgetcontent">
 			<ul>
@@ -22,13 +22,13 @@
 						</em>
 					</a>
 				</li>
-				<li class="show-more"><a href="javascript:void(0);"><span>Xem thêm</span></a></li>
+				<li class="show-more"><a href="javascript:void(0);"><span><u>See more</u></span></a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="tg-widget tg-catagories">
 		<div class="tg-widgettitle">
-			<h3>Tác giả</h3>
+			<h3>author</h3>
 		</div>
 		<div class="tg-widgetcontent">
 			<ul>
@@ -42,13 +42,13 @@
 						</em>
 					</a>
 				</li>
-				<li class="show-moreAuthor"><a href="javascript:void(0);"><span>Xem thêm</span></a></li>
+				<li class="show-moreAuthor"><a href="javascript:void(0);"><span><u>See more</u></span></a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="tg-widget tg-catagories">
 		<div class="tg-widgettitle">
-			<h3>Nhà xuất bản</h3>
+			<h3>publishing house</h3>
 		</div>
 		<div class="tg-widgetcontent">
 			<ul>
@@ -62,13 +62,13 @@
 						</em>
 					</a>
 				</li>
-				<li class="show-moreNXB"><a href="javascript:void(0);"><span>Xem thêm</span></a></li>
+				<li class="show-moreNXB"><a href="javascript:void(0);"><span><u>See more</u></span></a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="tg-widget tg-widgettrending">
 		<div class="tg-widgettitle">
-			<h3>Sản phẩm thịnh hành</h3>
+			<h3>Popular products</h3>
 		</div>
 		<div class="tg-widgetcontent">
 			<ul>
@@ -83,13 +83,13 @@
 							<div class="tg-posttitle">
 								<h3><a href="javascript:void(0);" th:text="${item.bookName}" th:href="@{/productDetail(id=${item.id})}"></a></h3>
 							</div>
-							<span class="tg-bookwriter">Bởi:
+							<span class="tg-bookwriter">by:
 								<a href="javascript:void(0);" th:text="${item.author?.authorName}"></a>
 							</span>
 						</div>
 					</article>
 				</li>
-				<li class="show-listPopular"><a href="javascript:void(0);"><span>Xem thêm</span></a></li>
+				<li class="show-listPopular"><a href="javascript:void(0);"><span><u>See more</u></span></a></li>
 			</ul>
 		</div>
 	</div>

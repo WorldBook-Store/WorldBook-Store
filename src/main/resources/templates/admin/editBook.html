@@ -336,28 +336,28 @@
 									<div class="row">
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group">
-												<label for="email2">ID Sách</label>
-												<input type="text" class="form-control" th:field="*{id}" id="id" placeholder="Enter Email" disabled="disabled">
+												<label for="email2">ID Book</label>
+												<input type="text" class="form-control" th:field="*{id}" id="id" placeholder="Enter id" disabled="disabled">
 												<small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
 											</div>
 											<div class="form-group">
-												<label for="password">Tên Sách</label>
-												<input type="text" class="form-control" th:field="*{bookName}" id="id" placeholder="Enter Email" required="required">
+												<label for="password">Book Name</label>
+												<input type="text" class="form-control" th:field="*{bookName}" id="id" placeholder="Enter book name" required="required">
 											</div>
 											<div class="form-group">
-												<label>Số Lượng</label>
-												<input th:field="*{quality}" id="quality" type="text" class="form-control" placeholder="Nhập Số Lương" required="required">
+												<label>Quality</label>
+												<input th:field="*{quality}" id="quality" type="text" class="form-control" placeholder="Enter quatily" required="required">
 											</div>
 											<div class="form-group">
-												<label>Giá Bán</label>
-												<input th:field="*{price}" id="price" type="text" class="form-control" placeholder="Nhập Giá Sách">
+												<label>Price</label>
+												<input th:field="*{price}" id="price" type="text" class="form-control" placeholder="Enter price">
 											</div>
 											<div class="form-group">
-												<label>Giá Bìa</label>
-												<input th:field="*{coverPrice}" id="price" type="text" class="form-control" placeholder="Nhập Giá Bìa Sách">
+												<label>Cover price</label>
+												<input th:field="*{coverPrice}" id="price" type="text" class="form-control" placeholder="Enter over price">
 											</div>
 											<div class="form-group">
-												<label>Thể Loại Sách</label>
+												<label>Category</label>
 												<select class="form-control"
 																		name="companie" th:field=*{companie.id} id="id">
 																		<option th:each="item : ${companyList}"
@@ -367,7 +367,7 @@
 																	</select>
 											</div>
 											<div class="form-group">
-												<label>Nhà Xuất Bản</label>
+												<label>Publishing company</label>
 												<select class="form-control"
 																		name="companie" th:field=*{companie.id} id="id">
 																		<option th:each="item : ${companyList}"
@@ -377,7 +377,7 @@
 																	</select>
 											</div>
 											<div class="form-group">
-												<label>Tác Giả</label> 
+												<label>Author</label> 
 																	<select class="form-control"
 																		name="author" th:field=*{author.id} id="id">
 																		<option th:each="item : ${authorList}"
@@ -387,15 +387,15 @@
 																	</select>
 											</div>
 											<div class="form-group">
-												<label>Hình Ảnh</label>
-												<input th:field="*{bookImage}" id="description" type="text" class="form-control" placeholder="Nháº­p mÃ´ táº£" readonly="readonly">
+												<label>Image</label>
+												<input th:field="*{bookImage}" id="description" type="text" class="form-control" placeholder="" readonly="readonly">
 											</div>
 											<div class="form-group">
-												<label>Mô Tả</label>
-												<input th:field="*{description}" id="description" type="text" class="form-control" placeholder="Nhập Mô Tả" required="required">
+												<label>Description</label>
+												<input th:field="*{description}" id="description" type="text" class="form-control" placeholder="Enter description" required="required">
 											</div>
 											<div class="form-group">
-												<label>Ngày Xuất Bản</label>
+												<label>Publication Date</label>
 												<input th:field="*{publishDate}" id="publishDate" type="date" class="form-control" placeholder="" required="required">
 											</div>
 									</div>

@@ -33,10 +33,10 @@ td , th {
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
-							<h1>Thanh Toán</h1>
+							<h1>checkout</h1>
 							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);">Trang Chủ</a></li>
-								<li class="tg-active">Thanh Toán</li>
+								<li><a href="javascript:void(0);">home</a></li>
+								<li class="tg-active">checkout</li>
 							</ol>
 						</div>
 					</div>
@@ -61,7 +61,7 @@ td , th {
 						<div class="tg-contactus">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="tg-sectionhead">
-									<h2>Đặt Hàng</h2>
+									<h2>order</h2>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -69,8 +69,8 @@ td , th {
 									<table>
 										<thead>
 											<tr>
-												<th class="product-name">Sản phẩm</th>
-												<th class="product-total">Tạm tính</th>
+												<th class="product-name">product</th>
+												<th class="product-total">provisional</th>
 											</tr>
 										</thead>
 										<tbody th:each="item : ${cartItems}">
@@ -84,24 +84,24 @@ td , th {
 										</tbody>
 										<tfoot>
 											<tr class="cart-subtotal">
-												<th>Tạm tính</th>
+												<th>provisional</th>
 												<td><span class="woocommerce-Price-amount amount"><bdi> [[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')} + ' VND']]<span
 															class="woocommerce-Price-currencySymbol"></span></bdi></span></td>
 											</tr>
 											<tr class="order-total">
-												<th>Tổng</th>
+												<th>Total</th>
 												<td><strong><span
 														class="woocommerce-Price-amount amount"><bdi>[[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')} + ' VND']]<span
 																class="woocommerce-Price-currencySymbol"></span></bdi></span></strong></td>
 											</tr>
 										</tfoot>
 									</table>
-										<h3>Chọn phương thức thanh toán</h3>
+										<h3>Select a payment method</h3>
 											<div class="radio">
-												<label><input type="radio" value="cod" name="checkOut" checked>Trả tiền mặt khi nhận hàng COD</label>
+												<label><input type="radio" value="cod" name="checkOut" checked>Cash on delivery COD</label>
 											</div>
 											<div class="radio">
-												<label><input type="radio" value="paypal" name="checkOut">Thanh Toán Với Paypal</label>
+												<label><input type="radio" value="paypal" name="checkOut">Paying With Paypal</label>
 											</div>
 
 								</div>
@@ -109,21 +109,21 @@ td , th {
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<fieldset>
 										<div class="form-group">
-											<input type="text" name="nameReceiver" class="form-control" placeholder="Họ Tên*" th:value="${customer.fullname}" disabled>
+											<input type="text" name="nameReceiver" class="form-control" placeholder="Name*" th:value="${customer.fullname}" disabled>
 										</div>
 										<div class="form-group">
-											<input th:field="*{phoneReceiver}" type="text" class="form-control" placeholder="Số Điện Thoại*">
+											<input th:field="*{phoneReceiver}" type="text" class="form-control" placeholder="Phone number*">
 											<span style="color: red">[[${errPhone}]]</span>
 										</div>
 										<div class="form-group">
-											<input type="email" name="email" class="form-control" placeholder="Họ Tên*" th:value="${customer.email}" disabled>
+											<input type="email" name="email" class="form-control" placeholder="Name*" th:value="${customer.email}" disabled>
 										</div>
 										<div class="form-group">
-											<input th:field="*{shippingAddress}" type="text" class="form-control" placeholder="Địa Chỉ*">
+											<input th:field="*{shippingAddress}" type="text" class="form-control" placeholder="Address*">
 											<span style="color: red">[[${errAddress}]]</span>
 										</div>
 										<div class="form-group tg-hastextarea">
-											<textarea placeholder="Thông Tin Thêm"></textarea>
+											<textarea placeholder="More information"></textarea>
 										</div>
 										<div class="form-group">
 											<button type="submit" class="tg-btn tg-active">Submit</button>
@@ -144,7 +144,7 @@ td , th {
 										<li><i class="icon-clock"></i> <span>Serving 7
 												Days A Week From 6am - 9pm</span></li>
 										<li><i class="icon-envelope"></i> <span> <em><a
-													href="mailto:support@domain.com">nhom2www@gmail.com</a></em>
+													href="mailto:support@domain.com">pvhuan552000@gmail.com</a></em>
 
 										</span></li>
 									</ul>
