@@ -31,10 +31,10 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
-							<h1>Tất cả sản phẩm</h1>
+							<h1>all products</h1>
 							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);" th:href="@{/}">Trang chủ</a></li>
-								<li class="tg-active">Các sản phẩm</li>
+								<li><a href="javascript:void(0);" th:href="@{/}">home</a></li>
+								<li class="tg-active">products</li>
 							</ol>
 						</div>
 					</div>
@@ -59,26 +59,30 @@
 								<div id="tg-content" class="tg-content">
 									<div class="tg-products">
 										<div class="tg-sectionhead">
-											<h2><span>Lựa chọn dành cho bạn</span>Sách bán chạy nhất</h2>
+											<h2><span>Your Choice</span>Best Sellers</h2>
 										</div>
 										
 										<div class="tg-productgrid">
 											<div class="tg-refinesearch">
-												<span>showing 1 to 8 of 20 total</span>
+												<span>showing 12 books on page</span>
 												<form class="tg-formtheme tg-formsortshoitems">
-													<fieldset>
+												
+												<!--  đang phát triển phân trang theo lựa chọn-->
+													<!-- <fieldset>
 														<div class="form-group">
-															<label>sort by:</label>
+															<label>Sort by:</label>
 															<span class="tg-select">
 																<select>
-																	<option>name</option>
-																	<option>name</option>
-																	<option>name</option>
+																	<option>Name</option>
+																	<option>Author</option>
+																	<option>Price</option>
 																</select>
 															</span>
 														</div>
-														<div class="form-group">
-															<label>show:</label>
+														
+														
+														 <div class="form-group">
+															<label>Show:</label>
 															<span class="tg-select">
 																<select>
 																	<option>8</option>
@@ -86,8 +90,10 @@
 																	<option>20</option>
 																</select>
 															</span>
-														</div>
-													</fieldset>
+														</div> 
+														
+														
+													</fieldset> -->
 												</form>
 											</div>
 											
@@ -100,14 +106,14 @@
 														</div>
 														<a class="tg-btnaddtowishlist" href="/login"
 															th:if="${customer.email == null}"> <i
-															class="icon-heart"></i> <span>Đăng Nhập</span>
+															class="icon-heart"></i> <span>login</span>
 														</a>
 
 														<div th:if="${customer.email != null}">
 															<a th:class="tg-btnaddtowishlist + ' ' + ${item.id} "
 																th:attr="onclick=|doFavorite('${item.id}')|"
 																th:if="${item.favorite} == false"> <i
-																class="icon-heart"></i> <span>Thêm yêu thích</span>
+																class="icon-heart"></i> <span>add favorite</span>
 															</a> <a
 																th:class="tg-btnaddtowishlist +  ' ' + ${item.id}  + ' hiden-flagFavorite' + ' st-hiden'  + ' flagFavorite' "
 																th:attr="onclick=|doFavorite('${item.id}')|"
@@ -116,13 +122,13 @@
 															</a> <a
 																th:class="tg-btnaddtowishlist +  ' ' + ${item.id} + ' do-flagFavorite' + ' st-hiden' "
 																th:attr="onclick=|doFavorite('${item.id}')|"> <i
-																class="icon-heart"></i> <span>Thêm yêu thích</span>
+																class="icon-heart"></i> <span>add favorite</span>
 															</a> <a
 																th:class="tg-btnaddtowishlist  + ' ' + ${item.id} + ' hiden-flagFavorite' + ' flagFavorite' + ' bookmark'"
 																th:attr="onclick=|doFavorite('${item.id}')|"
 																style="background: #77b748"
 																th:if="${item.favorite} == true"> <i
-																class="icon-heart"></i> <span>Đã yêu thích</span>
+																class="icon-heart"></i> <span>favorite</span>
 															</a>
 														</div>
 
@@ -131,11 +137,11 @@
 														<ul class="tg-bookscategories">
 															<li><a href="javascript:void(0);" th:text="${item.category?.categoryName}"></a></li>
 														</ul>
-														<div class="tg-themetagbox"><span class="tg-themetag">Giảm giá</span></div>
+														<div class="tg-themetagbox"><span class="tg-themetag">discount</span></div>
 														<div class="tg-booktitle">
 															<h3><a href="javascript:void(0);" th:href="@{/productDetail(id=${item.id})}" th:text="${item.bookName}"></a></h3>
 														</div>
-														<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);" th:href="@{/authorDetail(id=${item.id})}" th:text="${item.author?.authorName}"></a></span>
+														<span class="tg-bookwriter">by: <a href="javascript:void(0);" th:href="@{/authorDetail(id=${item.id})}" th:text="${item.author?.authorName}"></a></span>
 														<span class="tg-stars"><span></span></span>
 														<span class="tg-bookprice">
 															<ins th:text="${#numbers.formatDecimal(item.price, 1, 'DEFAULT', 0, 'DEFAULT')} + ' VND'"></ins>
@@ -143,7 +149,7 @@
 														</span>
 														<a class="tg-btn tg-btnstyletwo" th:attr="onclick=|addCart('${item.id}')|">
 															<i class="fa fa-shopping-basket"></i>
-															<em>Thêm giỏ hàng</em>
+															<em>add cart</em>
 														</a>
 													</div>
 												</div>
@@ -186,7 +192,7 @@
 													<i class="icon-magnifier"></i>
 												</button>
 												<input type="search" name="keyword" th:value="${keyword}"
-													class="form-group" placeholder="Tìm kiếm...">
+													class="form-group" placeholder="Search...">
 											</div>
 										</form>
 									</div>

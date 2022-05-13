@@ -5,112 +5,84 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="sidebar sidebar-style-2" data-background-color="dark2" th:fragment="navbar">
-			<div class="sidebar-wrapper scrollbar scrollbar-inner">
-				<div class="sidebar-content">
-					<div class="user">
-						<div class="avatar-sm float-left mr-2">
-							<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-						</div>
-						<div class="info">
-							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-								<span>
-									
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
-								</span>
-							</a>
-							<div class="clearfix"></div>
+	<div class="sidebar sidebar-style-2" data-background-color="dark2"
+		th:fragment="navbar">
+		<div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<div class="user">
+					<div class="avatar-sm float-left mr-2">
+						<img src="../assets/img/profile.jpg" alt="..."
+							class="avatar-img rounded-circle">
+					</div>
+					<div class="info">
+						<a data-toggle="collapse" href="#collapseExample"
+							aria-expanded="true"> <span> <span class="user-level">Administrator</span>
+								<span class="caret"></span>
+						</span>
+						</a>
+						<div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+						<div class="collapse in" id="collapseExample">
+							<ul class="nav">
+								<li><a href="#profile"> <span class="link-collapse">My
+											Profile</span>
+								</a></li>
+								<li><a href="#edit"> <span class="link-collapse">Edit
+											Profile</span>
+								</a></li>
+								<li><a href="#settings"> <span class="link-collapse">Settings</span>
+								</a></li>
+							</ul>
 						</div>
 					</div>
-					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
-								<p>Trang chủ</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-									<li>
-										<a th:href="@{/admin/home} ">
-											<i class="fas fa-home"></i>
-											<span class="sub-item">Trang quản lý</span>
-										</a>
-									</li>
-									<li>
-										<a th:href="@{/}">
-											<i class="fas fa-home"></i>
-											<span class="sub-item">Trang bán hàng</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Admin Management</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="tables">
-								<ul class="nav nav-collapse">
-									<li>
-										<a th:href="@{/admin/authorList}">
-											<i class="fas fa-users"></i>
-											<span class="">Quản Lý Tác Giả</span>
-										</a>
-									</li>
-									<li>
-										<a th:href="@{/admin/categories}">
-											<i class="fas fa-list"></i>
-											<span class="">Quản Lý Thể Loại</span>
-										</a>
-									</li>
-									<li>
-										<a th:href="@{/admin/books}">
-											<i class="fas fa-book"></i>
-											<span class="">Quản Lý Sách</span>
-										</a>
-									</li>
-									<li>
-										<a th:href="@{/admin/orders}">
-											<i class="fas fa-list"></i>
-											<span class="">Quản Lý Hóa Đơn</span>
-										</a>
-									</li>
-									<li>
-										<a th:href="@{/admin/customerList}">
-											<i class="fas fa-id-card"></i>
-											<span class="">Quản Lý Khách Hàng</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
 				</div>
+				<ul class="nav nav-primary">
+					<li class="nav-item active"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <i
+							class="fas fa-home"></i>
+							<p>Home</p> <span class="caret"></span>
+					</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li><a th:href="@{/admin/home} "> <i
+										class="fas fa-home"></i> <span class="sub-item">Admin
+											page</span>
+								</a></li>
+								<li><a th:href="@{/}"> <i class="fas fa-home"></i> <span
+										class="sub-item">Sales page</span>
+								</a></li>
+							</ul>
+						</div></li>
+					<li class="nav-item"><a data-toggle="collapse" href="#tables">
+							<i class="fas fa-table"></i>
+							<p>Admin Management</p> <span class="caret"></span>
+					</a>
+						<div class="collapse" id="tables">
+							<ul class="nav nav-collapse">
+								<li><a th:href="@{/admin/authorList}"> <i
+										class="fas fa-users"></i> <span class="">Author
+											Management</span>
+								</a></li>
+								<li><a th:href="@{/admin/categories}"> <i
+										class="fas fa-list"></i> <span class="">Manage
+											Categories</span>
+								</a></li>
+								<li><a th:href="@{/admin/books}"> <i
+										class="fas fa-book"></i> <span class="">Book Management</span>
+								</a></li>
+								<li><a th:href="@{/admin/orders}"> <i
+										class="fas fa-list"></i> <span class="">Invoice
+											Management</span>
+								</a></li>
+								<li><a th:href="@{/admin/customerList}"> <i
+										class="fas fa-id-card"></i> <span class="">Customer
+											Management</span>
+								</a></li>
+							</ul>
+						</div></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

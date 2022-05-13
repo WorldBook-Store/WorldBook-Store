@@ -20,11 +20,11 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
-							<h1>Tác giả</h1>
+							<h1>Author</h1>
 							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);" th:href="@{/}">trang chủ</a></li>
-								<li><a href="javascript:void(0);" th:href="@{/authors}">tác giả</a></li>
-								<li class="tg-active">Tên tác giả</li>
+								<li><a href="javascript:void(0);" th:href="@{/}">Home</a></li>
+								<li><a href="javascript:void(0);" th:href="@{/authors}">Author</a></li>
+								<li class="tg-active">Author name</li>
 							</ol>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 								</figure>
 								<div class="tg-authorcontentdetail">
 									<div class="tg-sectionhead">
-										<h2><span>[[${coutnBookByAuthor}]] sách đã xuất bản</span>[[${author.authorName}]]</h2>
+										<h2><span>[[${coutnBookByAuthor}]] published book</span>[[${author.authorName}]]</h2>
 										<ul class="tg-socialicons">
 											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
 											<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
@@ -70,7 +70,7 @@
 									</div>
 									<div class="tg-booksfromauthor">
 										<div class="tg-sectionhead">
-											<h2>Sách của [[${author.authorName}]]</h2>
+											<h2>Book by [[${author.authorName}]]</h2>
 										</div>
 										<div class="row">
 											<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3" th:each="item : ${bookByAuthor}">
@@ -82,18 +82,18 @@
 														</div>
 														<a class="tg-btnaddtowishlist" href="javascript:void(0);">
 															<i class="icon-heart"></i>
-															<span>thêm yêu thích</span>
+															<span>add favorite</span>
 														</a>
 													</figure>
 													<div class="tg-postbookcontent">
 														<ul class="tg-bookscategories">
 															<li><a href="javascript:void(0);">[[${item.category.categoryName}]]</a></li>
 														</ul>
-														<div class="tg-themetagbox"><span class="tg-themetag">giảm giá</span></div>
+														<div class="tg-themetagbox"><span class="tg-themetag">discount</span></div>
 														<div class="tg-booktitle">
 															<h3><a href="javascript:void(0);" th:href="@{/productDetail(id=${item.id})}">[[${item.bookName}]]</a></h3>
 														</div>
-														<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);">[[${item.author?.authorName}]]</a></span>
+														<span class="tg-bookwriter">by: <a href="javascript:void(0);">[[${item.author?.authorName}]]</a></span>
 														<span class="tg-stars"><span></span></span>
 														<span class="tg-bookprice">
 															<ins th:text="${#numbers.formatDecimal(item.price, 1, 'DEFAULT', 0, 'DEFAULT')} + ' đ'"></ins>
@@ -101,7 +101,7 @@
 														</span>
 														<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
 															<i class="fa fa-shopping-basket"></i>
-															<em>thêm vào giỏ</em>
+															<em>Add cart</em>
 														</a>
 													</div>
 												</div>
