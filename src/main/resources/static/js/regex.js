@@ -39,10 +39,10 @@ function check_txtPass1() {
 };
 
 function check_data_TK1() {
-	if (!check_txtUser()) {
+	if (!check_txtUser1()) {
 		return false;
 	}
-	if (!check_txtPass()) {
+	if (!check_txtPass1()) {
 		return false;
 	}
 	for (let i = 0; i < 1000; i++) {

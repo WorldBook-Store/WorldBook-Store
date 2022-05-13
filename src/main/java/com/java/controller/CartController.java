@@ -276,9 +276,9 @@ public class CartController {
 			}
 		
 
-//		serviceCommon.sendSimpleEmail(customer.getEmail(), "Book Store Xác Nhận Đơn hàng", "aaaa", cartItems,
-//				totalPrice, order);
-//		shoppingCartService.clear();
+		serviceCommon.sendSimpleEmail(customer.getEmail(), "Book Store Xác Nhận Đơn hàng", "aaaa", cartItems,
+				totalPrice, order);
+		shoppingCartService.clear();
 		session.removeAttribute("cartItems");
 		model.addAttribute("orderId", order.getId());
 
