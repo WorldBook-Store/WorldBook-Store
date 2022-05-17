@@ -62,8 +62,8 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title" style="text-decoration: underline;">Governance
-											Li Book</h4>
+										<h4 class="card-title" style="text-decoration: underline;">Book
+											Management</h4>
 										<button class="btn btn-primary btn-round ml-auto"
 											data-toggle="modal" data-target="#addRowModal">
 											<i class="fa fa-plus"></i> Add New
@@ -99,7 +99,7 @@
 																<div class="form-group form-group-default">
 																	<label>Book Name</label> <input th:field="*{bookName}"
 																		id="bookName" type="text" class="form-control"
-																		placeholder="Enter Book Title"> <small
+																		placeholder="Nhập Tên Sách"> <small
 																		th:if="${#fields.hasErrors('bookName')}"
 																		class="text-danger">Please Enter Book Title!</small>
 																</div>
@@ -108,7 +108,7 @@
 																<div class="form-group form-group-default">
 																	<label>Quantity</label> <input th:field="*{quality}"
 																		id="quality" type="text" class="form-control"
-																		placeholder="Enter Salary"> <small
+																		placeholder="Nhập Số Lương"> <small
 																		th:if="${#fields.hasErrors('quality')}"
 																		class="text-danger">Please Enter Quantity</small>
 																</div>
@@ -117,7 +117,7 @@
 																<div class="form-group form-group-default">
 																	<label>Selling Price</label> <input th:field="*{price}"
 																		id="price" type="text" class="form-control"
-																		placeholder="Enter Bookshelf"> <small
+																		placeholder="Nhập Giá Sách"> <small
 																		th:if="${#fields.hasErrors('price')}"
 																		class="text-danger">Please Enter a Bookshelf</small>
 																</div>
@@ -168,6 +168,14 @@
 																		th:if="${#fields.hasErrors('bookImage')}"
 																		class="text-danger">Add Product Image</small>
 																</div>
+															</div>
+
+														</div>
+														<div class="modal-footer no-bd">
+															<button type="submit" class="btn btn-primary">Thêm</button>
+															<button type="button" class="btn btn-danger"
+																data-dismiss="modal">Hủy</button>
+														</div>
 													</form>
 												</div>
 
@@ -201,8 +209,8 @@
 													<th>Author</th>
 													<th>Price</th>
 													<th>Quantity</th>
-													<th>Publishing house</th>
-													<th>CreatedDate</th>
+													<th>NXB</th>
+													<th>createdDate</th>
 													<th>Action</th>
 												</tr>
 											</tfoot>
@@ -256,19 +264,19 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title">Confirm</h5>
+													<h5 class="modal-title">Xác Nhận</h5>
 													<button type="button" class="close" data-dismiss="modal"
 														aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
 												<div class="modal-body">
-													<p>Do you want to delete this product?</p>
+													<p>Bạn có muốn xóa sản phẩm này không?</p>
 												</div>
 												<div class="modal-footer">
-													<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
+													<a id="yesOption" type="button" class="btn btn-danger">Có</a>
 													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">No</button>
+														data-dismiss="modal">Không</button>
 												</div>
 											</div>
 										</div>
@@ -281,19 +289,11 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul class="nav">
-							<li class="nav-item"><a class="nav-link"
-								href="https://www.themekita.com"> ThemeKita </a></li>
-							<li class="nav-item"><a class="nav-link" href="#"> Help
-							</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">
-									Licenses </a></li>
-						</ul>
-					</nav>
+					
 					<div class="copyright ml-auto">
-						2021, made with <i class="fa fa-heart heart text-danger"></i> by <a
-							href="#">Book Library</a>
+						2022, <a href="#"> WorldBook <i
+							class="fa fa-heart heart text-danger"> </i> by Nhom4
+						</a>
 					</div>
 				</div>
 			</footer>
@@ -383,18 +383,19 @@
 							$('#add-row').DataTable({
 								"pageLength" : 5,
 							});
-							var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-							/* 
-							 $('#addRowButton').click(function() {
-							 $('#add-row').dataTable().fnAddData([
-							 $("#addName").val(),
-							 $("#addPosition").val(),
-							 $("#addOffice").val(),
-							 action
-							 ]);
-							 $('#addRowModal').modal('hide');
 
-							 });  */
+							var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+							/* $('#addRowButton').click(function() {
+													$('#add-row').dataTable().fnAddData([
+														$("#addName").val(),
+														$("#addPosition").val(),
+														$("#addOffice").val(),
+														action
+														]);
+													$('#addRowModal').modal('hide');
+
+												}); */
 						});
 	</script>
 </body>
