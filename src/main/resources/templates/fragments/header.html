@@ -166,16 +166,13 @@
 												
 											</ul>
 										</div></li>
-									<li class="menu-item-has-children current-menu-item"><a
-										href="javascript:void(0);">Home</a>
-										<ul class="sub-menu">
-											<li class="current-menu-item"><a th:href="@{/}">Home</a></li>
-										</ul></li>
-									<li class="menu-item-has-children"><a
-										href="javascript:void(0);">Author</a>
-										<ul class="sub-menu">
+									
+										
+											<li ><a th:href="@{/}">Home</a></li>
+										
+									
 											<li><a href="authors">Author</a></li>
-										</ul></li>
+										
 									<li><a href="products">Bestseller</a></li>
 									
 									<li th:if="${customer.email == null}"><a href="/login">Login</a></li>
